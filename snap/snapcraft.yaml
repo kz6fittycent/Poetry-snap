@@ -1,0 +1,46 @@
+name: poetry
+adopt-info: poetry
+summary: Dependency Management for Python
+description: |
+  Poetry helps you declare, manage and install dependencies of Python projects, 
+  ensuring you have the right stack everywhere.
+  
+license: MIT
+
+base: core20
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+  - build-on: ppc64el
+
+apps:
+  poetry:
+    command: bin/poetry
+    environment:
+      LC_ALL: C.UTF-8
+      PYTHONPATH: $SNAP/usr/lib/python3/site-packages 
+      PATH: $SNAP/bin:$PATH
+      POETRY_HOME: $SNAP/bin
+      
+parts:
+  poetry:
+    source: https://github.com/python-poetry/poetry
+    source-type: git
+    plugin: python
+    
+    build-packages:
+      - curl
+      - tox
+      - python3
+    
+    stage-packages:
+      - python3
+ 
+    override-pull: |    
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"   
+
