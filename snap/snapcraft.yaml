@@ -11,18 +11,12 @@ base: core20
 grade: stable
 confinement: strict
 
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
-  - build-on: ppc64el
-
 apps:
   poetry:
     command: bin/poetry
     environment:
       LC_ALL: C.UTF-8
-      PYTHONPATH: $SNAP/usr/lib/python3/site-packages 
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
       PATH: $SNAP/bin:$PATH
       POETRY_HOME: $SNAP/bin
       
