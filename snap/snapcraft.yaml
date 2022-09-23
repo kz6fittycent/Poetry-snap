@@ -26,9 +26,11 @@ parts:
     plugin: nil
     override-build: |
       mkdir -p BUILD
-      cd BUILD
-      curl -sSL https://install.python-poetry.org | POETRY_HOME=$SNAP/etc/poetry python3 -
-    
+      cd BUILD/
+      curl -sSL https://install.python-poetry.org | python3 -
+      mkdir -p $SNAPCRAFT_PART_INSTALL/etc/
+      cp -r * $SNAPCRAFT_PART_INSTALL/etc/
+      
     build-packages:
       - curl
       - tox
