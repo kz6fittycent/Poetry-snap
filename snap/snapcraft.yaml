@@ -13,7 +13,7 @@ confinement: strict
 
 apps:
   poetry:
-    command: $SNAP/./local/bin/poetry
+    command: $SNAP/.local/bin/poetry
     environment:
       LC_ALL: C.UTF-8
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
