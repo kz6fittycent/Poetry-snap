@@ -13,12 +13,11 @@ confinement: strict
 
 apps:
   poetry:
-    command: bin/poetry
+    command: etc/poetry
     environment:
       LC_ALL: C.UTF-8
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
-      PATH: $SNAP/bin:$PATH
-      POETRY_HOME: $SNAP/bin
+      POETRY_HOME: $SNAP/etc/poetry
       
 parts:
   poetry:
@@ -28,7 +27,7 @@ parts:
     override-build: |
       mkdir -p BUILD
       cd BUILD
-      curl -sSL https://install.python-poetry.org | python3 -
+      curl -sSL https://install.python-poetry.org POETRY_HOME=$SNAP/etc/poetry | python3 -
     
     build-packages:
       - curl
