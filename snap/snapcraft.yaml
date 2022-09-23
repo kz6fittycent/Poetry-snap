@@ -27,7 +27,7 @@ parts:
     override-build: |
       mkdir -p BUILD
       cd BUILD
-      curl -sSL https://install.python-poetry.org POETRY_HOME=$SNAP/etc/poetry | python3 -
+      curl -sSL https://install.python-poetry.org | POETRY_HOME=$SNAP/etc/poetry python3 -
     
     build-packages:
       - curl
