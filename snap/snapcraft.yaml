@@ -35,7 +35,6 @@ parts:
       - curl
       - tox
       - python3
-      - pip-check-reqs
       - python3-pip
     
     stage-packages:
