@@ -24,7 +24,11 @@ parts:
   poetry:
     source: https://github.com/python-poetry/poetry
     source-type: git
-    plugin: python
+    plugin: nil
+    override-build: |
+      mkdir -p BUILD
+      cd BUILD
+      curl -sSL https://install.python-poetry.org | python3 -
     
     build-packages:
       - curl
