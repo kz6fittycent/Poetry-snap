@@ -13,11 +13,11 @@ confinement: strict
 
 apps:
   poetry:
-    command: etc/poetry
+    command: $SNAP/./local/bin/poetry
     environment:
       LC_ALL: C.UTF-8
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
-      POETRY_HOME: $SNAP/etc/poetry
+      POETRY_HOME: $SNAP/.local/bin/poetry
       
 parts:
   poetry:
@@ -28,8 +28,6 @@ parts:
       git clone --recursive https://github.com/python-poetry/poetry
       cd poetry/
       python3 install-poetry.py
-      mkdir -p $SNAPCRAFT_PART_INSTALL/etc/
-      cp -r * $SNAPCRAFT_PART_INSTALL/etc/
       
     build-packages:
       - curl
