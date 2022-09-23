@@ -25,9 +25,9 @@ parts:
     source-type: git
     plugin: nil
     override-build: |
-      mkdir -p BUILD
-      cd BUILD/
-      curl -sSL https://install.python-poetry.org | python3 -
+      git clone --recursive https://github.com/python-poetry/poetry
+      cd poetry/
+      python3 install-poetry.py
       mkdir -p $SNAPCRAFT_PART_INSTALL/etc/
       cp -r * $SNAPCRAFT_PART_INSTALL/etc/
       
