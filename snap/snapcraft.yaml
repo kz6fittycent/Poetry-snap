@@ -13,11 +13,11 @@ confinement: strict
 
 apps:
   poetry:
-    command: .local/bin/poetry
+    command: bin/poetry
     environment:
       LC_ALL: C.UTF-8
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
-      POETRY_HOME: $SNAP/.local/bin/poetry
+      POETRY_HOME: $SNAP/bin/poetry
       
 parts:
   poetry:
@@ -27,7 +27,7 @@ parts:
     override-build: |
       git clone --recursive https://github.com/python-poetry/poetry
       cd poetry/
-      python3 install-poetry.py
+      python3 install-poetry.py --path=/bin/poetry
       
     build-packages:
       - curl
